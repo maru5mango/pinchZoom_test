@@ -2,6 +2,7 @@ import "./App.css";
 import { useEffect } from "react";
 import Swipe from "swipejs";
 import SwipeDiv from "./component/swipe";
+import { pinchZoom1 } from "./logic/pinchZoom1";
 
 const imgArr = [
   {
@@ -30,6 +31,10 @@ function App() {
         callback: function (index, elem, dir) {},
         transitionEnd: function (index, elem) {},
       });
+    });
+
+    Array.from(document.getElementsByClassName("pinchZoom0")).map(($el) => {
+      pinchZoom1($el);
     });
   }, []);
 
