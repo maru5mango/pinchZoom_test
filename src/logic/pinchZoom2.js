@@ -6,7 +6,9 @@ export function pinchZoom2($img, resultID) {
 
   result.style.backgroundSize = `${$img.width * cx}px ${$img.height * cy}px`;
 
-  $img.addEventListener("touchstart", function () {
+  $img.addEventListener("touchstart", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
     $img.style.filter = `brightness(0.6)`;
     result.style.backgroundImage = `url(${$img.src})`;
     result.style.display = "";
@@ -14,15 +16,17 @@ export function pinchZoom2($img, resultID) {
 
   $img.addEventListener("touchmove", moveLens);
 
-  $img.addEventListener("touchend", function () {
+  $img.addEventListener("touchend", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
     $img.style.filter = "";
     result.style.display = "none";
   });
 
   function moveLens(e) {
     var pos, x, y;
-    /* Prevent any other actions that may occur when moving over the image */
     e.preventDefault();
+    e.stopPropagation();
     /* Get the cursor's x and y positions: */
     pos = getCursorPos(e);
 
@@ -43,8 +47,8 @@ export function pinchZoom2($img, resultID) {
     }
 
     result.style.backgroundPosition = `-${x * cx}px -${y * cy}px`;
-    result.style.top = `calc(${pos.y}px - 75px)`;
-    result.style.left = `calc(${pos.x}px - 75px)`;
+    result.style.top = `${pos.y}px`;
+    result.style.left = `${pos.x}px`;
   }
 
   function getCursorPos(e) {

@@ -4,6 +4,7 @@ import Swipe from "swipejs";
 import SwipeDiv from "./component/swipe";
 import { pinchZoom1 } from "./logic/pinchZoom1";
 import { pinchZoom2 } from "./logic/pinchZoom2";
+import { pinchZoom3 } from "./logic/pinchZoom3";
 
 const imgArr = [
   {
@@ -40,6 +41,10 @@ function App() {
 
     Array.from(document.getElementsByClassName("pinchZoom1")).map(($el) => {
       pinchZoom2($el, "result");
+    });
+
+    Array.from(document.getElementsByClassName("pinchZoom2")).map(($el) => {
+      pinchZoom3($el);
     });
   }, []);
 

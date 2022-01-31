@@ -98,5 +98,5 @@ h1 {
   background-repeat: no-repeat;
   z-index: 100;
   background-color: rgba(0, 0, 0 0.5);
-  /* display: none; */
+  display: none;
 }
