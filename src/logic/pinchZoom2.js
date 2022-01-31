@@ -10,18 +10,20 @@ export function pinchZoom2($img, resultID) {
   $img.addEventListener("touchstart", function () {
     $img.style.filter = `brightness(0.6)`;
     result.style.backgroundImage = `url(${$img.src})`;
-    result.style.display = "";
+    result.style.display = "flex";
   });
 
   $img.addEventListener("touchmove", moveLens, { passive: false });
 
   $img.addEventListener("touchend", function () {
+    window.Swipe1.enable();
     $img.style.filter = "";
     result.style.display = "none";
   });
 
   function moveLens(e) {
     e.preventDefault();
+    window.Swipe1.disable();
 
     var pos, x, y;
     /* Get the cursor's x and y positions: */
@@ -43,15 +45,24 @@ export function pinchZoom2($img, resultID) {
       y = 0;
     }
 
-    result.style.backgroundPosition = `-${x * cx}px -${y * cy}px`;
-    result.style.top = `calc(${pos.y}px - 75px)`;
-    result.style.left = `calc(${pos.x}px - 75px)`;
+    result.style.backgroundPosition = `-${x * cx - 75}px -${y * cy - 75}px`;
+    result.style.top = `${pos.y - 75}px`;
+    result.style.left = `${pos.x - 75}px`;
   }
 
   function getCursorPos(e) {
-    const { left, top } = $img.getBoundingClientRect();
-    const x = e.pageX - left - window.pageXOffset;
-    const y = e.pageY - top - window.pageYOffset;
+    var a,
+      x = 0,
+      y = 0;
+    e = e || window.event;
+    /* Get the x and y positions of the image: */
+    a = $img.getBoundingClientRect();
+    /* Calculate the cursor's x and y coordinates, relative to the image: */
+    x = e.pageX - a.left;
+    y = e.pageY - a.top;
+    /* Consider any page scrolling: */
+    x = x - window.pageXOffset;
+    y = y - window.pageYOffset;
     return { x, y };
   }
 }
