@@ -8,7 +8,7 @@ export function pinchZoom2($img, resultID) {
   result.style.display = "none";
 
   $img.addEventListener("touchstart", function (e) {
-    // if (e.touches.length <= 1) return;
+    if (e.touches.length <= 1) return;
     $img.style.filter = `brightness(0.6)`;
     result.style.backgroundImage = `url(${$img.src})`;
     result.style.display = "";
