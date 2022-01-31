@@ -1,13 +1,13 @@
 html {
-  touch-action: pan-x pan-y;
-  -ms-touch-action: pan-x pan-y;
+  /* touch-action: pan-x pan-y;
+  -ms-touch-action: pan-x pan-y; */
   -webkit-text-size-adjust: none;
   pointer-events: none;
 }
 
 * {
-  touch-action: pan-x pan-y;
-  -ms-touch-action: pan-x pan-y;
+  /* touch-action: pan-x pan-y;
+  -ms-touch-action: pan-x pan-y; */
   -webkit-text-size-adjust: none;
   pointer-events: none;
 }
@@ -63,7 +63,7 @@ h1 {
   float: left;
   position: relative;
   pointer-events: auto;
-  touch-action: pinch-zoom;
+  /* touch-action: pinch-zoom; */
 }
 
 .btnArea {
