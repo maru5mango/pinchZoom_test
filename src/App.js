@@ -2,7 +2,6 @@ import "./App.css";
 import { useEffect } from "react";
 import Swipe from "swipejs";
 import SwipeDiv from "./component/swipe";
-import { stopTouchEvent } from "./logic/stop";
 
 const imgArr = [
   {
@@ -32,7 +31,6 @@ function App() {
         transitionEnd: function (index, elem) {},
       });
     });
-    stopTouchEvent();
   }, []);
 
   return (
