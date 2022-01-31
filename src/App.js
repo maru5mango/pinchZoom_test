@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import Swipe from "swipejs";
 import SwipeDiv from "./component/swipe";
 import { pinchZoom1 } from "./logic/pinchZoom1";
+import { pinchZoom2 } from "./logic/pinchZoom2";
 
 const imgArr = [
   {
@@ -36,6 +37,10 @@ function App() {
     Array.from(document.getElementsByClassName("pinchZoom0")).map(($el) => {
       pinchZoom1($el);
     });
+
+    Array.from(document.getElementsByClassName("pinchZoom1")).map(($el) => {
+      pinchZoom2($el, "result");
+    });
   }, []);
 
   return (
@@ -52,8 +57,11 @@ function App() {
       </section>
       <section id="pinchZoom2">
         <h1>pinchZoom2</h1>
-        <div className="card">
-          <SwipeDiv num={1} imgArr={imgArr}></SwipeDiv>
+        <div id="pinchZoom2-div">
+          <div id="result" className="img-zoom-lens"></div>
+          <div className="card">
+            <SwipeDiv num={1} imgArr={imgArr}></SwipeDiv>
+          </div>
         </div>
         <div className="btnArea">
           <button onClick={() => window.Swipe1.prev()}>prev</button>

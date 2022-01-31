@@ -33,12 +33,20 @@ h1 {
   font-size: 12px;
 }
 
+#pinchZoom2-div {
+  width: 300px;
+  height: 424px;
+  position: relative;
+}
+
 .card {
   width: 300px;
   height: 400px;
   border-radius: 16px;
   background-color: #fff;
   margin: 12px;
+  position: relative;
+  overflow: hidden;
 }
 
 .swipe {
@@ -46,6 +54,7 @@ h1 {
   position: relative;
   height: 100%;
 }
+
 .swipe-wrap {
   overflow: hidden;
   position: relative;
@@ -77,4 +86,17 @@ h1 {
   border-radius: 8px;
   color: #fff;
   pointer-events: auto;
+}
+
+/* pinchZoom2 */
+.img-zoom-lens {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  z-index: 100;
+  background-color: rgba(0, 0, 0 0.5);
+  /* display: none; */
 }
