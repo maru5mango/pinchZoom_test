@@ -5,6 +5,13 @@ html {
   pointer-events: none;
 }
 
+* {
+  touch-action: none;
+  -ms-touch-action: none;
+  -webkit-text-size-adjust: none;
+  pointer-events: none;
+}
+
 section {
   width: 100%;
   height: 100vh;
