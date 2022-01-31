@@ -99,3 +99,10 @@ h1 {
   background-repeat: no-repeat;
   z-index: 100;
 }
+
+/* pinchZoom3 */
+.new-img-zoom {
+  z-index: 100;
+  position: absolute;
+  top: 0;
+}

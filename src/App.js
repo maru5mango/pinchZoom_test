@@ -44,7 +44,7 @@ function App() {
     });
 
     Array.from(document.getElementsByClassName("pinchZoom2")).map(($el) => {
-      pinchZoom3($el);
+      pinchZoom3($el, document.getElementById("pinchZoom3_div"));
     });
   }, []);
 
@@ -75,7 +75,7 @@ function App() {
       </section>
       <section id="pinchZoom3">
         <h1>pinchZoom3</h1>
-        <div className="card">
+        <div className="card" id="pinchZoom3_div">
           <SwipeDiv num={2} imgArr={imgArr}></SwipeDiv>
         </div>
         <div className="btnArea">
