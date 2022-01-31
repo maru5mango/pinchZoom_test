@@ -11,7 +11,7 @@ export function pinchZoom2($img, resultID) {
     e.stopPropagation();
     $img.style.filter = `brightness(0.6)`;
     result.style.backgroundImage = `url(${$img.src})`;
-    result.style.display = "";
+    result.style.display = "flex";
   });
 
   $img.addEventListener("touchmove", moveLens);
