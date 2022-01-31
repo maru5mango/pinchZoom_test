@@ -1,13 +1,13 @@
 html {
-  touch-action: none;
-  -ms-touch-action: none;
+  touch-action: pan-x pan-y;
+  -ms-touch-action: pan-x pan-y;
   -webkit-text-size-adjust: none;
   pointer-events: none;
 }
 
 * {
-  touch-action: none;
-  -ms-touch-action: none;
+  touch-action: pan-x pan-y;
+  -ms-touch-action: pan-x pan-y;
   -webkit-text-size-adjust: none;
   pointer-events: none;
 }
