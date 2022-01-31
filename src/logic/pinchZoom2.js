@@ -55,15 +55,21 @@ export function pinchZoom2($img, resultID) {
     var a,
       x = 0,
       y = 0;
-    e = e || window.event;
-    /* Get the x and y positions of the image: */
+
     a = $img.getBoundingClientRect();
-    /* Calculate the cursor's x and y coordinates, relative to the image: */
-    x = e.pageX || e.touches[0].pageX - a.left;
-    y = e.pageY || e.touches[0].pageY - a.top;
+    const cursor = getPoint(e.touches);
+    x = Math.min(cursor.x, a.width) - a.left;
+    y = Math.min(cursor.y, a.height) - a.top;
     /* Consider any page scrolling: */
     x = x - window.pageXOffset;
     y = y - window.pageYOffset;
     return { x, y };
+  }
+
+  function getPoint(arr) {
+    return {
+      x: arr.reduce((prev, cur) => prev + cur.pageX, 0) / arr.length,
+      y: arr.reduce((prev, cur) => prev + cur.pageY, 0) / arr.length,
+    };
   }
 }
