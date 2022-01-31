@@ -8,7 +8,7 @@ export function pinchZoom2($img, resultID) {
   result.style.display = "none";
 
   $img.addEventListener("touchstart", function (e) {
-    if (e.touches.length <= 1) return;
+    // if (e.touches.length <= 1) return;
     $img.style.filter = `brightness(0.6)`;
     result.style.backgroundImage = `url(${$img.src})`;
     result.style.display = "";
@@ -57,9 +57,9 @@ export function pinchZoom2($img, resultID) {
       y = 0;
 
     a = $img.getBoundingClientRect();
-    const cursor = getPoint(e.touches);
-    x = Math.min(cursor.x, a.width) - a.left;
-    y = Math.min(cursor.y, a.height) - a.top;
+    const cursor = getPoint([...e.touches]);
+    x = cursor.x - a.left;
+    y = cursor.y - a.top;
     /* Consider any page scrolling: */
     x = x - window.pageXOffset;
     y = y - window.pageYOffset;
