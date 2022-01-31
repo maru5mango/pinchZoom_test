@@ -34,7 +34,7 @@ function App() {
       });
     });
     stopTouchEvent();
-    window.onload = init();
+    init();
   }, []);
 
   return (
