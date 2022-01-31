@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import Swipe from "swipejs";
 import SwipeDiv from "./component/swipe";
 import { stopTouchEvent } from "./logic/stop";
-import { init } from "./logic/pinchZoom1";
 
 const imgArr = [
   {
@@ -34,7 +33,6 @@ function App() {
       });
     });
     stopTouchEvent();
-    init();
   }, []);
 
   return (
