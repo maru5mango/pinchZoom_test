@@ -1,28 +1,29 @@
 export function pinchZoom2($img, resultID) {
   const result = document.getElementById(resultID);
 
-  const cx = result.offsetWidth / 100;
-  const cy = result.offsetHeight / 100;
+  const cx = 1.5;
+  const cy = 1.5;
 
   result.style.backgroundSize = `${$img.width * cx}px ${$img.height * cy}px`;
+  result.style.display = "none";
 
-  $img.addEventListener("touchstart", function (e) {
+  $img.addEventListener("touchstart", function () {
     $img.style.filter = `brightness(0.6)`;
     result.style.backgroundImage = `url(${$img.src})`;
-    result.style.display = "flex";
+    result.style.display = "";
   });
 
-  $img.addEventListener("touchmove", moveLens);
+  $img.addEventListener("touchmove", moveLens, { passive: false });
 
-  $img.addEventListener("touchend", function (e) {
+  $img.addEventListener("touchend", function () {
     $img.style.filter = "";
     result.style.display = "none";
   });
 
   function moveLens(e) {
-    var pos, x, y;
     e.preventDefault();
-    e.stopPropagation();
+
+    var pos, x, y;
     /* Get the cursor's x and y positions: */
     pos = getCursorPos(e);
 
@@ -43,15 +44,14 @@ export function pinchZoom2($img, resultID) {
     }
 
     result.style.backgroundPosition = `-${x * cx}px -${y * cy}px`;
-    result.style.top = `${pos.y}px`;
-    result.style.left = `${pos.x}px`;
+    result.style.top = `calc(${pos.y}px - 75px)`;
+    result.style.left = `calc(${pos.x}px - 75px)`;
   }
 
   function getCursorPos(e) {
-    const { pageX, pageY } = e || window.event;
     const { left, top } = $img.getBoundingClientRect();
-    const x = pageX - left - window.pageXOffset;
-    const y = pageY - top - window.pageYOffset;
+    const x = e.pageX - left - window.pageXOffset;
+    const y = e.pageY - top - window.pageYOffset;
     return { x, y };
   }
 }
