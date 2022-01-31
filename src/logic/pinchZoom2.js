@@ -7,8 +7,6 @@ export function pinchZoom2($img, resultID) {
   result.style.backgroundSize = `${$img.width * cx}px ${$img.height * cy}px`;
 
   $img.addEventListener("touchstart", function (e) {
-    e.preventDefault();
-    e.stopPropagation();
     $img.style.filter = `brightness(0.6)`;
     result.style.backgroundImage = `url(${$img.src})`;
     result.style.display = "flex";
@@ -17,8 +15,6 @@ export function pinchZoom2($img, resultID) {
   $img.addEventListener("touchmove", moveLens);
 
   $img.addEventListener("touchend", function (e) {
-    e.preventDefault();
-    e.stopPropagation();
     $img.style.filter = "";
     result.style.display = "none";
   });
