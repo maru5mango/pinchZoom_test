@@ -7,10 +7,12 @@ export function pinchZoom2($img, resultID) {
   result.style.backgroundSize = `${$img.width * cx}px ${$img.height * cy}px`;
   result.style.display = "none";
 
-  $img.addEventListener("touchstart", function () {
+  $img.addEventListener("touchstart", function (e) {
+    if (e.touches.length <= 1) return;
     $img.style.filter = `brightness(0.6)`;
     result.style.backgroundImage = `url(${$img.src})`;
-    result.style.display = "flex";
+    result.style.display = "";
+    window.Swipe1.disable();
   });
 
   $img.addEventListener("touchmove", moveLens, { passive: false });
@@ -23,7 +25,6 @@ export function pinchZoom2($img, resultID) {
 
   function moveLens(e) {
     e.preventDefault();
-    window.Swipe1.disable();
 
     var pos, x, y;
     /* Get the cursor's x and y positions: */
